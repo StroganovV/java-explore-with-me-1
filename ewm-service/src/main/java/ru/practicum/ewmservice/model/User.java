@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,4 +25,8 @@ public class User {
     private String name;
     @Column(name = "created")
     private LocalDateTime created;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<User> subscriptions;
+    @Column(name = "subscription")
+    private Boolean subscription = true;
 }

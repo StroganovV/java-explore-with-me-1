@@ -6,6 +6,7 @@ import ru.practicum.ewmservice.dto.newDto.NewUserDto;
 import ru.practicum.ewmservice.model.User;
 
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 public class UserMapper {
     public static UserShortDto toUserShortDto(User initiator) {
@@ -20,6 +21,16 @@ public class UserMapper {
         dto.setId(user.getId());
         dto.setName(user.getName());
         dto.setEmail(user.getEmail());
+
+        if (user.getSubscriptions() != null && user.getSubscriptions().size() > 0) {
+            dto.setSubscriptions(user.getSubscriptions()
+                    .stream()
+                    .map(UserMapper::toUserShortDto)
+                    .collect(Collectors.toList()));
+        }
+
+        dto.setSubscription(user.getSubscription());
+
         return dto;
     }
 

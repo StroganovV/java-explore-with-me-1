@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +22,6 @@ public class UserDto {
     @NotNull
     @Email
     private String email;
+    private List<UserShortDto> subscriptions;
+    private boolean subscription;
 }
