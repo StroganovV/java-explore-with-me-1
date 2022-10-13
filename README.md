@@ -1,2 +1,39 @@
-# java-explore-with-me
-Template repository for ExploreWithMe project.
+# **Приложение - Explore with me**
+## _Дипломный проект_
+## автор - Строганов Владимир
+
+Ссылка на github - [pullrequest](https://github.com/StroganovV/java-explore-with-me-1/pull/1)
+
+### Описание
+Ивент - афиша, где каждый пользователь может разместить различные события вроде свадьбы,
+праздника, концерта или сеанса кино, а другие пользователи могут подать заявку на посещение данного мероприятия.
+Пользователи имеют возможность просматиривать информацию об опубликованных событиях, выбирать события из подборок
+по различным критериям, подписываться на других пользователей, чтобы просматривать их актуальные события.
+
+Приложение состоит из 2-х сервисов:
+1. Основной сервис, который объединяет в себе функционал
+- создания и модерации событий, пользователей, запросов на участие в событии;
+- предоставления подборок событий по критериям;
+- подписок на других пользователей;
+2. Сервис сбора статистики по просмотрам, предназначенный для определения наиболее просматриваемых событий.
+
+Подробнее с основным API Вы можете ознакомиться с помощью инструмента Swagger по следующим ссылкам:
+1) [Спецификация основного сервиса](https://raw.githubusercontent.com/yandex-praktikum/java-explore-with-me/main/ewm-main-service-spec.json);
+2) [Спецификация сервера статистики](https://raw.githubusercontent.com/yandex-praktikum/java-explore-with-me/main/ewm-stats-service-spec.json);
+
+API подписок:
+1. GET /users/{userId}/subscriptions - получить список всех подписок пользователя;
+2. GET /users/{userId}/subscriptions/events?otherId={long} - получить список всех актуальных событий пользователя на которого подписан;
+3. POST /users/{userId}/subscriptions/{subscriptionId} - подписаться на другого пользователя;
+4. DELETE /users/{userId}/subscriptions?subscriptionId={long} - отписаться от пользователя;
+5. PATCH /users/{userId}/subscriptions/close - закрыть возможность подписаться;
+6. PATCH /users/{userId}/subscriptions/open - открыть возможность подписаться;
+
+### Технологии
+Приложение написано на языке Java 11.
+Используемые технологии: Spring Boot, Maven, PostgeSql 14, Hibernate, Lombok, Docker, Docker-compose.
+
+### Запуск проекта
+Для запуска проекта скопируйте его в свою IDE c подключенным плагином Maven,
+в терминале запустите команду *_mvn clean package_* и после упаковки запустите с помощью Docker-compose командой *_docker-compose up --build_*;
+
