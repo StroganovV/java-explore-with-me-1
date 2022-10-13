@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         User user = repository.findById(userId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", userId)));
 
-        User other = repository.findById(userId)
+        User other = repository.findById(otherId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", otherId)));
 
         if (!user.getSubscriptions().contains(other)) {
@@ -76,11 +76,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto addSubscription(long userId, long subscriptionId) {
+
         User user = repository.findById(userId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", userId)));
 
-        User sub = repository.findById(userId)
+        User sub = repository.findById(subscriptionId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", subscriptionId)));
+
+        if (!user.getSubscriptionOption()) {
+            throw new IllegalArgumentException("Subscriptions are closed");
+        }
 
         user.getSubscriptions().add(sub);
 
@@ -92,7 +97,7 @@ public class UserServiceImpl implements UserService {
         User user = repository.findById(userId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", userId)));
 
-        User sub = repository.findById(userId)
+        User sub = repository.findById(subscriptionId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", subscriptionId)));
 
         user.getSubscriptions().remove(sub);
@@ -104,7 +109,7 @@ public class UserServiceImpl implements UserService {
         User user = repository.findById(userId)
                 .orElseThrow(() -> new EwmObjNotFoundException(String.format("User with id=%d was not found", userId)));
 
-        user.setSubscription(option);
+        user.setSubscriptionOption(option);
 
         return UserMapper.toUserDto(repository.save(user));
     }

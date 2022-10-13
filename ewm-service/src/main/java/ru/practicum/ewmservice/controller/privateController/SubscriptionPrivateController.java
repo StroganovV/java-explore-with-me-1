@@ -31,9 +31,9 @@ public class SubscriptionPrivateController {
     }
 
     //подписаться на другого юзера
-    @PostMapping
+    @PostMapping("/{subscriptionId}")
     public UserDto addSubscription(@PathVariable @Positive long userId,
-                                   @RequestParam @Positive long subscriptionId) {
+                                   @PathVariable @Positive long subscriptionId) {
         return userService.addSubscription(userId, subscriptionId);
     }
 

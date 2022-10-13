@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS compilations CASCADE;
 DROP TABLE IF EXISTS participation_requests CASCADE;
 DROP TABLE IF EXISTS event_user CASCADE;
 DROP TABLE IF EXISTS event_compilation CASCADE;
+DROP TABLE IF EXISTS users_subscriptions CASCADE;
 
 
 CREATE TABLE if not exists "users"
@@ -13,7 +14,14 @@ CREATE TABLE if not exists "users"
     "email"   varchar(255) UNIQUE,
     "name"    varchar(255),
     "created" timestamp without time zone,
-    "subscription" boolean
+    "subscription_option" boolean
+);
+
+CREATE TABLE if not exists "users_subscriptions"
+(
+    "user_id"         bigint references users (id),
+    "subscription_id" bigint references users (id),
+    primary key ("user_id", "subscription_id")
 );
 
 CREATE TABLE if not exists "category"
@@ -60,6 +68,7 @@ CREATE TABLE if not exists "participation_requests"
     "status"       varchar(255),
     "created"      timestamp without time zone
 );
+
 
 CREATE TABLE if not exists "event_user"
 (

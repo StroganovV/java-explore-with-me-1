@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,8 +26,15 @@ public class User {
     private String name;
     @Column(name = "created")
     private LocalDateTime created;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<User> subscriptions;
-    @Column(name = "subscription")
-    private Boolean subscription = true;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "users_subscriptions",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "subscription_id")})
+    private List<User> subscriptions = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subscriptions")
+    private List<User> subscribers = new ArrayList<>();
+
+    @Column(name = "subscription_option")
+    private Boolean subscriptionOption = true;
 }

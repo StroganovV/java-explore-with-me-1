@@ -29,7 +29,7 @@ public class UserMapper {
                     .collect(Collectors.toList()));
         }
 
-        dto.setSubscription(user.getSubscription());
+        dto.setSubscription(user.getSubscriptionOption());
 
         return dto;
     }
