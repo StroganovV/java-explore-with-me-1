@@ -68,7 +68,13 @@ public class EventMapper {
         dto.setEventDate(event.getEventDate());
         dto.setPublishedOn(event.getPublishedOn());
         dto.setCreatedOn(event.getCreated());
-        dto.setViews((Integer) client.getViews("/events/" + event.getId()));
+
+        try {
+            dto.setViews((Integer) client.getViews("/events/" + event.getId()));
+        } catch (Exception e) {
+            dto.setViews(null);
+        }
+
         return dto;
     }
 
@@ -83,7 +89,13 @@ public class EventMapper {
         dto.setInitiator(UserMapper.toUserShortDto(event.getInitiator()));
         dto.setPaid(event.getPaid());
         dto.setEventDate(event.getEventDate());
-        dto.setViews((Integer) client.getViews("/events/" + event.getId()));
+
+        try {
+            dto.setViews((Integer) client.getViews("/events/" + event.getId()));
+        } catch (Exception e) {
+            dto.setViews(null);
+        }
+
         return dto;
     }
 
@@ -114,12 +126,13 @@ public class EventMapper {
         event.setDescription(dto.getDescription());
         event.setPaid(dto.getPaid());
         event.setTitle(dto.getTitle());
+
         event.setCategory(catRepository.findById(dto.getCategory())
                 .orElseThrow(() -> new EwmObjNotFoundException(
                         String.format("Category with id=%d was not found", dto.getCategory()))));
+
         event.setParticipantLimit(dto.getParticipantLimit());
         event.setEventDate(dto.getEventDate());
-
         event.setAnnotation(dto.getAnnotation());
         return event;
     }
