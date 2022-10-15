@@ -35,7 +35,7 @@ public class EventServiceImpl implements EventService {
     private EventGetAllRepository getAllRepository;
     private PartRequestRepository partRequestRepository;
     private EventClient client;
-    EventMapper mapper;
+    private EventMapper mapper;
 
     //***ADMIN METHOD'S*** ↓
     @Override
