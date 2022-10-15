@@ -21,7 +21,7 @@ public class Compilation {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "pinned")
+    @Column(name = "pinned", nullable = false)
     private Boolean pinned;
     @ManyToMany
     @JoinTable(name = "event_compilation",

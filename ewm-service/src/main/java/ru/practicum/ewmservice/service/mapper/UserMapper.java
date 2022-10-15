@@ -1,5 +1,6 @@
 package ru.practicum.ewmservice.service.mapper;
 
+import org.springframework.stereotype.Component;
 import ru.practicum.ewmservice.dto.UserDto;
 import ru.practicum.ewmservice.dto.UserShortDto;
 import ru.practicum.ewmservice.dto.newDto.NewUserDto;
@@ -8,7 +9,9 @@ import ru.practicum.ewmservice.model.User;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+@Component
 public class UserMapper {
+
     public static UserShortDto toUserShortDto(User initiator) {
         UserShortDto dto = new UserShortDto();
         dto.setId(initiator.getId());

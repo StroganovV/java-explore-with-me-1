@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+import static ru.practicum.ewmservice.Constants.DATE_FORMAT;
+
 @RestController
 @RequestMapping(path = "/events")
 @AllArgsConstructor
@@ -27,9 +29,9 @@ public class EventPublicController {
                                             @RequestParam(value = "categories", required = false) List<Category> categories,
                                             @RequestParam(value = "paid", required = false) Boolean paid,
                                             @RequestParam(value = "rangeStart", required = false)
-                                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
+                                            @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeStart,
                                             @RequestParam(value = "rangeEnd", required = false)
-                                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
+                                            @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime rangeEnd,
                                             @RequestParam(value = "onlyAvailable", required = false) Boolean onlyAvailable,
                                             @RequestParam(value = "sort") SortEnum sort,
                                             @RequestParam(defaultValue = "0") @PositiveOrZero int from,

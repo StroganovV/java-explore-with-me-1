@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
+import static ru.practicum.ewmservice.Constants.DATE_FORMAT;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,9 +39,9 @@ public class NewEventDto {
     @Value("true")
     private Boolean requestModeration;
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Future
+    @JsonFormat(pattern = DATE_FORMAT)
     private LocalDateTime eventDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_FORMAT)
     private LocalDateTime createdOn = LocalDateTime.now();
 }

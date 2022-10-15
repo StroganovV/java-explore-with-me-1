@@ -1,12 +1,13 @@
 package ru.practicum.ewmservice.service.mapper;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.practicum.ewmservice.dto.CompilationDto;
 import ru.practicum.ewmservice.dto.newDto.NewCompilationDto;
 import ru.practicum.ewmservice.model.Compilation;
 
-@Service
+@Component
 @AllArgsConstructor
 public class CompilationMapper {
     private EventMapper eventMapper;
