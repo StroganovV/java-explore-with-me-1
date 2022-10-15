@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static ru.practicum.ewmservice.Constants.DATE_FORMAT;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,7 +21,7 @@ public class ErrorResponse {
     private String message;
     private String reason;
     private HttpStatus status;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_FORMAT)
     private LocalDateTime timestamp;
 
 }

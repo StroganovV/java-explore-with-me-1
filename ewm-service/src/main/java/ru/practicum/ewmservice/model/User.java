@@ -35,6 +35,6 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subscriptions")
     private List<User> subscribers = new ArrayList<>();
 
-    @Column(name = "subscription_option")
+    @Column(name = "subscription_option", nullable = false)
     private Boolean subscriptionOption = true;
 }

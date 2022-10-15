@@ -41,7 +41,7 @@ public class Event {
     private Boolean paid;
     @Column(name = "request_moderation")
     private Boolean requestModeration;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
     @Column(name = "event_date")

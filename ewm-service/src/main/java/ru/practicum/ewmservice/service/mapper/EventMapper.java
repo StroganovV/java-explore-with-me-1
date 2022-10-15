@@ -1,6 +1,7 @@
 package ru.practicum.ewmservice.service.mapper;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewmservice.client.EventClient;
@@ -20,7 +21,7 @@ import ru.practicum.ewmservice.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 @AllArgsConstructor
 public class EventMapper {
     private CategoryRepository catRepository;

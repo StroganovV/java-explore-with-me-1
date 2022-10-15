@@ -9,6 +9,8 @@ import ru.practicum.ewmservice.model.Location;
 
 import java.time.LocalDateTime;
 
+import static ru.practicum.ewmservice.Constants.DATE_FORMAT;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,7 +22,7 @@ public class AdminUpdateEventRequestDto {
     private Long category;
     private Integer participantLimit;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_FORMAT)
     private LocalDateTime eventDate;
     private Location location;
     private Boolean paid;

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import static ru.practicum.ewmservice.Constants.DATE_FORMAT;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +21,6 @@ public class UpdateEventRequestDto {
     private Integer participantLimit;
     private Boolean paid;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_FORMAT)
     private LocalDateTime eventDate;
 }

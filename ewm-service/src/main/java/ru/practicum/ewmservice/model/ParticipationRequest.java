@@ -23,7 +23,7 @@ public class ParticipationRequest {
     private User requestor;
     @ManyToOne
     private Event event;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
     @Column(name = "created")

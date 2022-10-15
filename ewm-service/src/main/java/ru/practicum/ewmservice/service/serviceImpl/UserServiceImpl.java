@@ -24,9 +24,9 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    UserRepository repository;
-    EventRepository eventRepository;
-    EventMapper eventMapper;
+    private UserRepository repository;
+    private EventRepository eventRepository;
+    private EventMapper eventMapper;
 
     @Override
     public List<UserDto> getAll(List<Long> ids, int from, int size) {
